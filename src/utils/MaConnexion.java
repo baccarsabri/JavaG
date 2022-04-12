@@ -1,23 +1,22 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package utils;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
 /**
  *
- * @author Oussama Fdhila
+ * @author malek
  */
 public class MaConnexion {
     
-    //DB CREDENTIALS
-    final static String URL = "jdbc:mysql://127.0.0.1:3307/lancitounssi";
+     //DB CREDENTIALS
+    final static String URL = "jdbc:mysql://127.0.0.1:3306/lancitounsif";
     final static String USERNAME = "root";
     final static String PWD = "";
     
@@ -30,7 +29,7 @@ public class MaConnexion {
         
         try {
             cnx = DriverManager.getConnection(URL, USERNAME, PWD);
-            System.out.println("Connexion avec succés");
+            System.out.println("Connexion avec succes");
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -48,9 +47,6 @@ public class MaConnexion {
     public Connection getCnx() {
         return cnx;
     }
-    
-    
-    
     
     
     

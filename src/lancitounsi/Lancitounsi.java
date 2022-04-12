@@ -1,20 +1,19 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package lancitounsi;
 
 import java.sql.Connection;
-import java.util.List;
-import models.User;
-import services.ServiceTransaction;
-import services.ServiceUser;
+import models.Projet;
+import models.Proposition;
+import services.ServiceProjet;
+import services.ServiceProposition;
 import utils.MaConnexion;
 
 /**
  *
- * @author bacca
+ * @author malek
  */
 public class Lancitounsi {
 
@@ -22,32 +21,43 @@ public class Lancitounsi {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       // TODO code application logic he
-        long millis=System.currentTimeMillis();  
-        java.sql.Date now=new java.sql.Date(millis);  
+        // TODO code application logic here
         
-     
+        
+        
+        
+        
+         // Projet test
         MaConnexion instance = MaConnexion.getInstance();
         Connection cnx = instance.getCnx();
+        System.out.println("connextion..."+cnx);
         
-        ServiceUser s=new ServiceUser();
-        ServiceTransaction t= new ServiceTransaction();
-        User user= s.UserDetails(1);
+        Projet p=new Projet(2,"malek","aaaaaaaaaaaaaaaa",10,102,"pending");
+        ServiceProjet s =new ServiceProjet();
+         s.createProjet(p);
+        s.updateProjet(10, "malik", "sdsqjdksghqdsqgd", 20, 400);
+       Projet paa= s.detailProjet(5);
+        s.deleteProjet(33);
+        System.out.println(s.readProjets());
+        System.out.println("detail : "+s.detailProjet(33));
+        
+        //Proposition test
+        
+        Proposition prop=new Proposition(paa,7,100,6,"testtesttesttestaaa ","pending");
+        ServiceProposition sprop=new ServiceProposition();
+        sprop.createProposition(prop);
         
         
-        // o
-        User u;
-       // u = new User( "sabri@gmail.com" , "password" , "malek" , "abassisse" , now , "ok" , "ok" , true , "1234", now , false , 100, "tunis", 2015, "sabri");
-        //s.addUser(u);
+        System.out.println("listBy : "+s.MesProjetsByStatut(2,"pending"));
         
-        //User a=s.login("baccar_sabri@hotmail.co", "12345678");
         
-       // t.transaction(user, "BASIC_PLANS");
-       
-       //boolean test=s.updateUser(2 ,"sabribaccar6@gmail.com", "12345678", "ghofrahn", "sabri", now, "okey", "developper", "la goulette", 2015, "photo2");
-       //System.out.println(test);
-       List<User> l=s.Users();
-       System.out.println(l);  
+        System.out.println("Verif Prop : "+sprop.verifProp(8,16));
+        
+        
+        
+        System.out.println("Verif Prop : "+s.readProjetsByCritere("id", "DESC"));
+        
+        // end Malek
     }
     
 }
