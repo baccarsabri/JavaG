@@ -15,7 +15,7 @@ public interface IServiceContrat {
      //CRUD
     public void createContrat(contrat  c);
     public List<contrat> readcontrats();
-     public void Deletecontrat(int id);
+     public void Deletecontrat(contrat c);
     public void updatecontrat(contrat c);
      public float Sommetotale();
       public List<contrat> RechercherparStatut(String statut);

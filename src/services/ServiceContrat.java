@@ -79,17 +79,13 @@ public class ServiceContrat implements IServiceContrat{
 
    
     @Override
-    public void Deletecontrat(int id) {
+    public void Deletecontrat(contrat c) {
         try {
-
-            if (id != 0) {
-                String sql = "delete from contrat WHERE id=?";
-                PreparedStatement st = cnx.prepareStatement(sql);
-                st.setInt(1, id);
-                st.executeUpdate();
-                System.out.println("contrat deleted !");
-            }
-
+            String req = "DELETE FROM contrat WHERE id=?";
+            PreparedStatement pst = cnx.prepareStatement(req);
+            pst.setInt(1, c.getId());
+            pst.executeUpdate();
+            System.out.println("Contrat deleted !");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -207,6 +203,93 @@ contrat cat= new contrat();
         return cat;
 
     }
+      
+        public List<contrat> contratsfinis() {
+        ArrayList<contrat> cr = new ArrayList();
+        
+        try {
+            Statement st = cnx.createStatement();
+            String req = "SELECT * FROM contrat where statut='Finished'";
+            ResultSet rs = st.executeQuery(req);
+            
+            while (rs.next()) {                
+                
+                cr.add(new contrat (rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getFloat(4), rs.getDate(5), rs.getString(6)));
+                
+            }
+            System.out.println(cr);
+                    
+        } catch (SQLException ex) {
+          ex.printStackTrace();
+        }
+        
+        return cr;
+    }
+      public List<contrat> contratsencours() {
+        ArrayList<contrat> cr = new ArrayList();
+        
+        try {
+            Statement st = cnx.createStatement();
+            String req = "SELECT * FROM contrat where statut='Pending'";
+            ResultSet rs = st.executeQuery(req);
+            
+            while (rs.next()) {                
+                
+                cr.add(new contrat (rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getFloat(4), rs.getDate(5), rs.getString(6)));
+                
+            }
+            System.out.println(cr);
+                    
+        } catch (SQLException ex) {
+          ex.printStackTrace();
+        }
+        
+        return cr;
+    }
+      public float Sommetotalefini() {
+        float somme = 0;
+        String req = "SELECT sum(prix) as somme FROM contrat where statut='Finished' ";
+        try {
+            PreparedStatement prepared = cnx.prepareStatement(req);
+            ResultSet rs = prepared.executeQuery();
+            while (rs.next()) {
+                somme = rs.getFloat("somme");
+            }
+            System.out.println(somme);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return somme;
+
+    }
+      
+      public float Sommetotaleencours() {
+        float somme = 0;
+        String req = "SELECT sum(prix) as somme FROM contrat where statut='Pending' ";
+        try {
+            PreparedStatement prepared = cnx.prepareStatement(req);
+            ResultSet rs = prepared.executeQuery();
+            while (rs.next()) {
+                somme = rs.getFloat("somme");
+            }
+            System.out.println(somme);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return somme;
+
+    }
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
 
     
     

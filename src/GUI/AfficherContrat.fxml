@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="504.0" prefWidth="819.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AfficherContratController">
+   <children>
+      <TableView fx:id="TableContrat" layoutX="74.0" layoutY="53.0" prefHeight="348.0" prefWidth="648.0">
+        <columns>
+          <TableColumn fx:id="col_prix" prefWidth="75.0" text="Prix" />
+          <TableColumn fx:id="col_date" prefWidth="149.0" text="Created at" />
+            <TableColumn fx:id="col_stat" prefWidth="149.0" text="Statut" />
+            <TableColumn fx:id="col_free" prefWidth="149.0" text="freelance " />
+            <TableColumn fx:id="col_client" prefWidth="149.0" text="client " />
+        </columns>
+      </TableView>
+      <Button fx:id="suppr" layoutX="117.0" layoutY="413.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="51.0" prefWidth="156.0" text="Supprimer" textFill="#b50416">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <Button fx:id="modif" layoutX="502.0" layoutY="413.0" mnemonicParsing="false" onAction="#modifier" prefHeight="51.0" prefWidth="156.0" text="modifier" textFill="#f5192b">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+   </children>
+</AnchorPane>

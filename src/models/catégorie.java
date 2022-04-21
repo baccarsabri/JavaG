@@ -62,6 +62,10 @@ public class catégorie {
     public String toString() {
         return "cat\u00e9gorie{" + "id=" + id + ", nom=" + nom + '}';
     }
+
+    public String[] getLink() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
     
