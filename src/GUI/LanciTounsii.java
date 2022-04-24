@@ -26,8 +26,8 @@ public class LanciTounsii extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
        
-           //Parent root = FXMLLoader.load(getClass().getResource("AjouterContratt.fxml"));
-          Parent root = FXMLLoader.load(getClass().getResource("AfficherContrat.fxml"));
+           Parent root = FXMLLoader.load(getClass().getResource("AjouterContratt.fxml"));
+         // Parent root = FXMLLoader.load(getClass().getResource("AfficherContrat.fxml"));
                   LanciTounsii.primaryStage = primaryStage;
 
            // Parent root = FXMLLoader.load(getClass().getResource("AjouterCategorie.fxml"));

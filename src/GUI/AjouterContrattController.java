@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import models.contrat;
 import services.ServiceContrat;
+import utils.EmailSender;
 
 /**
  * FXML Controller class
@@ -83,6 +84,9 @@ public class AjouterContrattController implements Initializable {
         
         else 
         {
+            
+                    EmailSender.sendEmailWithAttachments("samaali.mohamedyassine@esprit.tn", "Contrat Ajouté ", "Le contrat ayant le prix " +f+ " a éte ajouté avec succés le " +sqlDate+"");
+
               contrat c = new contrat(1, 1, f, sqlDate, cstatut.getValue());
             ct.createContrat(c);
             ajout.getScene().getWindow().hide();

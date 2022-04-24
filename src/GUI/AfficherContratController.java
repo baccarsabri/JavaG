@@ -152,7 +152,7 @@ public class AfficherContratController implements Initializable {
         int testEndPage = cat.getRowCount() - AfficherContratController.row;
         
         if (this.size >= cat.getRowCount() || this.size >= testEndPage) {
-           // NextPage.setDisable(true);
+            NextPage.setDisable(true);
 
         } else {
             NextPage.setDisable(false);
@@ -193,7 +193,7 @@ public class AfficherContratController implements Initializable {
         }
         );
 
-//
+
         TableContrat.setItems(oblist);
 
 
