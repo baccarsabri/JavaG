@@ -7,6 +7,7 @@ package GUI;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 import models.contrat;
 import services.ServiceContrat;
 
@@ -50,8 +52,10 @@ public class AjouterContrattController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+       
         cstatut.getItems().add("Pending");
         cstatut.getItems().add("Finished");
+       
         float fini = ct.Sommetotalefini();
         String a = String.valueOf(fini);
         float encours = ct.Sommetotaleencours();
@@ -67,8 +71,19 @@ public class AjouterContrattController implements Initializable {
         java.util.Date date = new java.util.Date();
         java.sql.Date sqlDate = new java.sql.Date(date.getTime());
         float f = Float.parseFloat(cprix.getText());
-        if (f != 0) {
-            contrat c = new contrat(1, 1, f, sqlDate, cstatut.getValue());
+      
+        if (f<=0 ) {
+            JOptionPane.showMessageDialog(null, "Vous devez saisir un prix valide positif et different de 0  ");
+          
+        }
+        else if(cstatut.getSelectionModel().getSelectedIndex()==-1 )
+        {
+            JOptionPane.showMessageDialog(null, "Vous devez séléctionner l'etat du contrat ");
+        }
+        
+        else 
+        {
+              contrat c = new contrat(1, 1, f, sqlDate, cstatut.getValue());
             ct.createContrat(c);
             ajout.getScene().getWindow().hide();
             Parent root = FXMLLoader.load(getClass().getResource("AfficherContrat.fxml"));
@@ -77,9 +92,10 @@ public class AjouterContrattController implements Initializable {
             stage.setScene(scene);
             stage.show();
             stage.setResizable(false);
+            
+            }
         }
-        else{System.out.println("error");}
-
+  
     }
 
-}
+

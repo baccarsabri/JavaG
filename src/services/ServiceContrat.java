@@ -281,7 +281,43 @@ contrat cat= new contrat();
     }
       
       
-      
+       public List<contrat> pagination(int size, int row) {
+        List<contrat> cr = new ArrayList<contrat>();
+
+        try {
+            String req = "select * from `contrat` LIMIT ? OFFSET ? ";
+
+            PreparedStatement s = cnx.prepareStatement(req);
+            s.setInt(1, size);
+            s.setInt(2, row);
+
+            ResultSet rs = s.executeQuery();
+            while (rs.next()) {
+
+              cr.add(new contrat (rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getFloat(4), rs.getDate(5), rs.getString(6)));
+            }
+
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return cr;
+
+    }
+          public int getRowCount() {
+        int count = 0;
+        try {
+            String req = "SELECT COUNT(*) FROM `contrat`";
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+        }
+        return count;
+    }
       
       
       

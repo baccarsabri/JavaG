@@ -26,9 +26,9 @@ public class LanciTounsii extends Application {
     public void start(Stage primaryStage) throws IOException {
        
            //Parent root = FXMLLoader.load(getClass().getResource("AjouterContratt.fxml"));
-          // Parent root = FXMLLoader.load(getClass().getResource("AfficherContrat.fxml"));
-           // Parent root = FXMLLoader.load(getClass().getResource("AjouterCategorie.fxml"));
-          Parent root = FXMLLoader.load(getClass().getResource("listeCategorie.fxml"));
+          //Parent root = FXMLLoader.load(getClass().getResource("AfficherContrat.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("AjouterCategorie.fxml"));
+            // Parent root = FXMLLoader.load(getClass().getResource("listeCategorie.fxml"));
 
 
         Scene scene = new Scene(root);
