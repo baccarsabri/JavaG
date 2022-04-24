@@ -21,13 +21,16 @@ import javafx.stage.Stage;
  * @author 21655
  */
 public class LanciTounsii extends Application {
-    
+        public static Stage primaryStage;
+
     @Override
     public void start(Stage primaryStage) throws IOException {
        
            //Parent root = FXMLLoader.load(getClass().getResource("AjouterContratt.fxml"));
-          //Parent root = FXMLLoader.load(getClass().getResource("AfficherContrat.fxml"));
-            Parent root = FXMLLoader.load(getClass().getResource("AjouterCategorie.fxml"));
+          Parent root = FXMLLoader.load(getClass().getResource("AfficherContrat.fxml"));
+                  LanciTounsii.primaryStage = primaryStage;
+
+           // Parent root = FXMLLoader.load(getClass().getResource("AjouterCategorie.fxml"));
             // Parent root = FXMLLoader.load(getClass().getResource("listeCategorie.fxml"));
 
 

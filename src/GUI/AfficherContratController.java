@@ -150,9 +150,9 @@ public class AfficherContratController implements Initializable {
         //PreviousPage.setGraphic(imageViewv);
         ServiceContrat cat=new ServiceContrat();
         int testEndPage = cat.getRowCount() - AfficherContratController.row;
-
+        
         if (this.size >= cat.getRowCount() || this.size >= testEndPage) {
-            NextPage.setDisable(true);
+           // NextPage.setDisable(true);
 
         } else {
             NextPage.setDisable(false);
@@ -207,8 +207,8 @@ public class AfficherContratController implements Initializable {
 
               AfficherContratController.row = AfficherContratController.row + AfficherContratController.size;
         Parent root = FXMLLoader.load(getClass().getResource("AfficherContrat.fxml"));
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+        LanciTounsii.primaryStage.setScene(new Scene(root));
+        LanciTounsii.primaryStage.show();
     }
 
     @FXML
@@ -217,8 +217,8 @@ public class AfficherContratController implements Initializable {
 
               AfficherContratController.row = AfficherContratController.row + AfficherContratController.size;
         Parent root = FXMLLoader.load(getClass().getResource("AfficherContrat.fxml"));
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+       LanciTounsii.primaryStage.setScene(new Scene(root));
+       LanciTounsii.primaryStage.show();
     }
     
     

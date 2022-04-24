@@ -47,11 +47,7 @@ public class AjouterCategorieController implements Initializable {
     private void lllll(ActionEvent event) {
      List test= new ArrayList();
            test=  cat.RechercherparNom(cacategorie.getText());
-     if(test.isEmpty())
-     {
-           System.out.println("zebi");
-     }
-           
+   
         if(cacategorie.getText().trim().equals(""))
         {
              JOptionPane.showMessageDialog(null, "Veuillez saisir un nom de catégorie   ");
@@ -66,8 +62,6 @@ public class AjouterCategorieController implements Initializable {
         catégorie c=new catégorie(cacategorie.getText());
       
 
-       
-       
         cat.createCatégorie(c);
         
         }
