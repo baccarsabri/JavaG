@@ -7,12 +7,14 @@ package services;
 
 import interfaces.IServiceReclamation;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import models.Reclamation;
 import utils.MaConnexion;
 
@@ -66,33 +68,34 @@ public class ServiceReclamation implements IServiceReclamation{
         return reclamations;
     }
 public void deleteReclamation(int id) {
-        try {
-
-            if (id != 0) {
-                String sql = "delete from reclamation WHERE id=?";
-                PreparedStatement st = cnx.prepareStatement(sql);
-                st.setInt(1, id);
-                st.executeUpdate();
-                System.out.println("Réclamation supprimée !");
-            }
-
+     String req = "DELETE FROM reclamation WHERE id = ?";
+           try {
+            PreparedStatement st = cnx.prepareStatement(req);  
+            st.setInt(1, id);
+            
+            
+            st.executeUpdate();
+            System.out.println("Réclamation supprimée!!");
+            
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
+            
+           ex.printStackTrace();
+       
+    }
     }
         public void updateReclamation(Reclamation r) {
         try {
 
-            if (r.getId() != 0) {
-                String sql = "UPDATE reclamation  SET projet_id=?,description=?,date_de_reclamation=?,statut=? WHERE id=?";
+            if (r.getId() != 0) { 
+                String sql = "UPDATE reclamation  SET description=?,date_de_reclamation=?,statut=? WHERE id=?";
 
                 PreparedStatement st = cnx.prepareStatement(sql);
-                                st.setInt(1, r.getProjet_id());
+                           //     st.setInt(1, r.getProjet_id());
 
-                st.setString(2, r.getDescription());
-                st.setDate(3, r.getDate_de_reclamation());
-                st.setString(4, r.getStatut());
-                st.setInt(5, r.getId());
+                st.setString(1, r.getDescription());
+                st.setDate(2, r.getDate_de_reclamation());
+                st.setString(3, r.getStatut());
+                st.setInt(4, r.getId());
                 st.executeUpdate();
                 System.out.println("la réclamation est à jour !");
             }
@@ -178,11 +181,8 @@ public void deleteReclamation(int id) {
             PreparedStatement P = cnx.prepareStatement(requete);
             P.setString(1, desc);
             ResultSet rs = P.executeQuery();
-            
             while (rs.next()) {                
-                
-                reclamations.add(new Reclamation(rs.getInt(1), rs.getInt(2),rs.getString(3), rs.getDate("date_de_reclamation"), rs.getString(5)));
-                
+                reclamations.add(new Reclamation(rs.getInt(1), rs.getInt(2),rs.getString(3), rs.getDate("date_de_reclamation"), rs.getString(5)));           
             }
             
         } catch (SQLException ex) {
@@ -191,9 +191,43 @@ public void deleteReclamation(int id) {
         
         return reclamations;
     }
-    
-    
-    
-    
-    
+    public Date afficher_date(){
+
+    java.sql.Date dt = new java.sql.Date(0,0,0);   
+        String req="SELECT DATE(date_de_reclamation) AS date, COUNT(*) AS count FROM reclamation GROUP BY date ORDER BY count DESC LIMIT 1";
+        
+        try {
+            PreparedStatement ste = cnx.prepareStatement(req);
+            
+
+            ResultSet rs = ste.executeQuery();
+            while (rs.next()) {
+                dt = rs.getDate("date");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return dt;
+    }
+     @Override
+    public String CreateCaptchaValue() {
+        Random random = new Random();
+        int length = 7 + (Math.abs(random.nextInt()) % 3);
+        StringBuffer captchaStrBuffer = new StringBuffer();
+        for (int i = 0; i < length; i++) {
+            int baseCharacterNumber = Math.abs(random.nextInt()) % 62;
+            int characterNumber = 0;
+            if (baseCharacterNumber < 26) {
+                characterNumber = 65 + baseCharacterNumber;
+            } else if (baseCharacterNumber < 52) {
+                characterNumber = 97 + (baseCharacterNumber - 26);
+            } else {
+                characterNumber = 48 + (baseCharacterNumber - 52);
+            }
+            captchaStrBuffer.append((char) characterNumber);
+        }
+        return captchaStrBuffer.toString();
+
+    }
+
 }

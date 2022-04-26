@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import t2s.son.LecteurTexte;
 
 /**
  *
@@ -19,11 +20,13 @@ public class LanciTounsiFX extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("AjouterReclamation.fxml"));
+       Parent root = FXMLLoader.load(getClass().getResource("AfficherReclamationBack.fxml"));
          // Parent root = FXMLLoader.load(getClass().getResource("AjouterFichier.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        /*LecteurTexte lecteur =new LecteurTexte("Bonjour, quel est votre problème?");
+        lecteur.playAll();*/
     }
 
     /**
@@ -31,6 +34,7 @@ public class LanciTounsiFX extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+        
     }
     
 }

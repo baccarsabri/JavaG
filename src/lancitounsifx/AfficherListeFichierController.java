@@ -54,6 +54,7 @@ public class AfficherListeFichierController implements Initializable {
     private Button rech;
     @FXML
     private TextField desc;
+    int id;
 
     /**
      * Initializes the controller class.
@@ -71,7 +72,7 @@ List<Fichier> liste = new ArrayList<>();
        ServiceFichier sf = new ServiceFichier();
         Fichier t=new Fichier();
         t=TableFichier.getSelectionModel().getSelectedItems().get(0);
-        sf.deleteFichier(t);
+        sf.deleteFichier(id);
         System.out.println(t);
         initialize(null,null);
     }

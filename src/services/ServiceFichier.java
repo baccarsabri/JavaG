@@ -25,7 +25,7 @@ public class ServiceFichier implements IServiceFichier{
     //var
     MaConnexion instance = MaConnexion.getInstance();
     Connection cnx = instance.getCnx();
-
+ @Override
     public void createFichier(Fichier f) {
         //request
         String req = "INSERT INTO `fichier`(`projet_id`,`link`) VALUES (?,?)";
@@ -43,7 +43,7 @@ public class ServiceFichier implements IServiceFichier{
         
         
     }
-
+ @Override
     public List<Fichier> readFichier() {
         ArrayList<Fichier> fichiers = new ArrayList();
         
@@ -64,32 +64,35 @@ public class ServiceFichier implements IServiceFichier{
         
         return fichiers;
     }
-
-public void deleteFichier(int id) {
-        try {
-
-            if (id != 0) {
-                String sql = "delete from fichier WHERE id=?";
-                PreparedStatement st = cnx.prepareStatement(sql);
-                st.setInt(1, id);
-                st.executeUpdate();
-                System.out.println("Fichier supprimé !");
-            }
-
+    
+    @Override
+    public void deleteFichier(int id) {
+       String req = "DELETE FROM fichier WHERE id = ?";
+           try {
+            PreparedStatement st = cnx.prepareStatement(req);  
+            st.setInt(1, id);
+            
+            
+            st.executeUpdate();
+            System.out.println("Fichier supprimé!!");
+            
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
+            
+           ex.printStackTrace();
+       
     }
+    }
+    
         public void updateFichier(Fichier f) {
         try {
 
             if (f.getId() != 0) {
-                String sql = "UPDATE fichier  SET projet_id=?,link=? WHERE id=?";
+                String sql = "UPDATE fichier  SET link=? WHERE id=?";
 
                 PreparedStatement st = cnx.prepareStatement(sql);
-                st.setInt(1, f.getProjet_id());
-                st.setString(2, f.getLink());
-                st.setInt(3, f.getId());
+             //   st.setInt(1, f.getProjet_id());
+                st.setString(1, f.getLink());
+                st.setInt(2, f.getId());
                 st.executeUpdate();
                 System.out.println("le fichier est à jour !");
             }
@@ -98,7 +101,8 @@ public void deleteFichier(int id) {
             System.out.println(ex.getMessage());
         }
     }
-    
+        
+    @Override
     public Fichier findFichById(int id) throws SQLException {
 
         Fichier fichier = new Fichier();
@@ -116,7 +120,27 @@ public void deleteFichier(int id) {
 
         return fichier;
     }
-    
+     @Override
+    public List<Fichier> RechercheByLink(String lnk) {
+        ArrayList<Fichier> fichiers = new ArrayList();
+        try {
+            String requete = "SELECT * FROM fichier where link =?";
+            PreparedStatement P = cnx.prepareStatement(requete);
+            P.setString(1, lnk);
+            ResultSet rs = P.executeQuery();
+            
+            while (rs.next()) {                
+                
+                fichiers.add(new Fichier(rs.getInt(1), rs.getString(2)));
+                
+            }
+            
+        } catch (SQLException ex) {
+          ex.printStackTrace();
+        }
+        
+        return fichiers;
+    }
     
     
     
