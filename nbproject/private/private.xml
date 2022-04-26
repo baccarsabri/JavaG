@@ -3,38 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/home/ItemPropController.java</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/home/em.fxml</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/services/ServiceUser.java</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/interfaces/IServiceProjet.java</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/home/ItemController.java</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/models/Projet.java</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/services/ServiceTransaction.java</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/models/Portfolio.java</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/lancitounsi/Lancitounsi.java</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/home/DProjetController.java</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/services/ServiceReview.java</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/services/ServicePortfolio.java</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/utils/EmailSender.java</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/interfaces/IServiceProposition.java</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/services/ServiceContrat.java</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/interfaces/IServicePortfolio.java</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/utils/MaConnexion.java</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/models/contrat.java</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/models/catégorie.java</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/services/ServiceProjet.java</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/home/style.css</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/home/Controller.java</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/javafx/test.java</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/home/ItemListPropController.java</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/home/MesPropositionsController.java</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/models/Proposition.java</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/services/ServiceReclamation.java</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/home/DetailPController.java</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/home/Main.java</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/services/ServiceCatégorie.java</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/home/ProposerController.java</file>
-            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/src/services/ServiceProposition.java</file>
+            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/lancitounsi/src/utils/EmailSender.java</file>
+            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/lancitounsi/src/lancitounsi/Lancitounsi.java</file>
         </group>
     </open-files>
 </project-private>

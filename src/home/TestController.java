@@ -5,33 +5,34 @@
 package home;
 
 import java.io.IOException;
+import javafx.scene.paint.Color;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Side;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import models.Projet;
-import models.Proposition;
-import services.ServiceProposition;
+import services.ServiceProjet;
 
 /**
  * FXML Controller class
  *
  * @author malek
  */
-public class MesPropositionsController implements Initializable {
+public class TestController implements Initializable {
 
     @FXML
     private Button btnOverview;
@@ -48,66 +49,66 @@ public class MesPropositionsController implements Initializable {
     @FXML
     private Button btnSignout;
     @FXML
-    private Pane pnlCustomer;
-    @FXML
-    private Pane pnlOrders;
-    @FXML
-    private Pane pnlMenus;
-    @FXML
-    private Pane pnlOverview;
-    @FXML
-    private VBox pnItems;
-    @FXML
-    private Pane pnlDetailP;
-    @FXML
-    private Pane det;
-    ServiceProposition sp = new ServiceProposition();
+    private PieChart pie;
     int user_id;
     
-    
-     
-   private Stage stage;
+     private Stage stage;
     private Scene scene;
-    private Parent parent;  
-      private Parent root;
-    private Parent root1;
-    @FXML
-    private Label tt_prop;
+    private Parent parent; 
+    private Parent root; 
     
+    ServiceProjet sp = new ServiceProjet();
+   
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        user_id = 4;
-            List<Proposition> l = sp.MesPropositions(user_id);
+        System.out.println("ok test");
+        
+        user_id=4;
+        
+     List<Projet> lp =  sp.MesProjetsByStatut(user_id,"pending");
+     
+     List<Projet> la =  sp.MesProjetsByStatut(user_id,"accorded");
+       
+         PieChart.Data slice1 = new PieChart.Data("Pending : "+lp.size(), lp.size());
+         
+         
+       PieChart.Data slice2 = new PieChart.Data("Accorded : "+la.size(), la.size());
+      
+        pie.getData().add(slice1);
+       pie.getData().add(slice2);
+      
+       
+
+       
+    final Label caption = new Label("");
+caption.setTextFill(Color.DARKORANGE);
+caption.setStyle("-fx-font: 24 arial;");
+
+for (final PieChart.Data data : pie.getData()) {
+    data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED,
+        new EventHandler<MouseEvent>() {
             
-            tt_prop.setText(String.valueOf(l.size()));
-        Node[] nodes = new Node[l.size()];
-        for (int i = 0; i < nodes.length; i++) {
-             FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(Main.class.getResource("itemListProp.fxml"));
-           try {
-               Pane pane = fxmlLoader.load();
-               
-               
-                  ItemListPropController ItemController= fxmlLoader.getController();
-           
-               ItemController.setData(l.get(i));
-               
-                pnItems.getChildren().add(pane);
-               
-           } catch (IOException ex) {
-               Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-           }  
             
-        }
-    }    
+            @Override public void handle(MouseEvent e) {
+                
+                System.out.println("pressed");
+                caption.setTranslateX(e.getSceneX());
+                caption.setTranslateY(e.getSceneY());
+                caption.setText(String.valueOf(data.getPieValue()) + "%");
+             }
+        });
+}
+   } 
+    
+   
 
     @FXML
     private void handleClicks(ActionEvent actionEvent) throws IOException {
-           user_id=4;
+            user_id=4;
         if (actionEvent.getSource() == btnCustomers) {
               FXMLLoader loader = new FXMLLoader(getClass().getResource("MesProjets.fxml"));
       root = loader.load();
@@ -148,7 +149,6 @@ public class MesPropositionsController implements Initializable {
          stage.setScene(scene);
          stage.show();
         }
-        
     }
     
 }

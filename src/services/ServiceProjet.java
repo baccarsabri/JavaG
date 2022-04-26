@@ -203,6 +203,31 @@ public class ServiceProjet implements IServiceProjet{
         
         return projets;
     }
+
+    @Override
+    public List<Projet> readProjetsLike(String like) {
+             ArrayList<Projet> projets = new ArrayList();
+             String likee;
+        
+        try {
+            
+            Statement st = cnx.createStatement();
+            likee="'"+like+"%'";
+            String req = "SELECT * FROM projet WHERE nom LIKE "+likee;
+            ResultSet rs = st.executeQuery(req);
+            
+            while (rs.next()) {                
+                
+                projets.add(new Projet(rs.getInt(1),rs.getInt(2), rs.getString("nom"), rs.getString("description"), rs.getDouble(5), rs.getDouble(6), rs.getString("statut")));
+                
+            }
+            
+        } catch (SQLException ex) {
+          ex.printStackTrace();
+        }
+        
+        return projets;
+    }
     
     
     

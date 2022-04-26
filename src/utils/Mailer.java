@@ -17,7 +17,9 @@ public class Mailer {
           //Get properties object    
           Properties props = new Properties();    
           props.put("mail.smtp.host", "smtp.gmail.com");    
-          props.put("mail.smtp.socketFactory.port", "465");    
+          props.put("mail.smtp.socketFactory.port", "465");   
+          
+props.put("mail.smtp.ssl.protocols", "TLSv1.2");
           props.put("mail.smtp.socketFactory.class",    
                     "javax.net.ssl.SSLSocketFactory");    
           props.put("mail.smtp.auth", "true");    
@@ -34,7 +36,8 @@ public class Mailer {
            MimeMessage message = new MimeMessage(session);    
            message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));    
            message.setSubject(sub);    
-           message.setText(msg);    
+           message.setText(msg); 
+           message.setContent(msg, "text/html");
            //send message  
            Transport.send(message);    
            System.out.println("message sent successfully");    

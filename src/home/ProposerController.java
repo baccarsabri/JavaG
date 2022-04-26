@@ -57,8 +57,11 @@ public class ProposerController implements Initializable {
      private Stage stage;
     private Scene scene;
     private Parent parent; 
+     private Parent root; 
     
     int id ;
+    
+    int user_id;
 
     /**
      * Initializes the controller class.
@@ -89,31 +92,48 @@ public class ProposerController implements Initializable {
     
   @FXML
     public void handleClicks(ActionEvent actionEvent) throws IOException {
+           user_id=4;
         if (actionEvent.getSource() == btnCustomers) {
-            
-        }
-        if (actionEvent.getSource() == btnMenus) {
-            
-          
-        }
-        if (actionEvent.getSource() == btnOverview) {
-           Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
+              FXMLLoader loader = new FXMLLoader(getClass().getResource("MesProjets.fxml"));
+      root = loader.load();
+      MesProjetsController mp = loader.getController();
+     mp.listAll();
          stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
          
          scene = new Scene(root);
          stage.setScene(scene);
          stage.show();
-      
+        }
+        
+        if (actionEvent.getSource() == btnOverview) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
+      root = loader.load();
+      Controller c = loader.getController();
+      c.listell();
+         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+         
+         scene = new Scene(root);
+         stage.setScene(scene);
+         stage.show();
         }
         if(actionEvent.getSource()==btnOrders)
         {
-                  Parent root = FXMLLoader.load(getClass().getResource("MesPropositions.fxml"));
+               Parent root = FXMLLoader.load(getClass().getResource("MesPropositions.fxml"));
+         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+         
+         scene = new Scene(root);
+         stage.setScene(scene);
+         stage.show();
+        } if(actionEvent.getSource()==btnMenus)
+        {
+               Parent root = FXMLLoader.load(getClass().getResource("test.fxml"));
          stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
          
          scene = new Scene(root);
          stage.setScene(scene);
          stage.show();
         }
+        
     }
     
     

@@ -4,7 +4,6 @@
  */
 package home;
 
-import static home.ItemPropController.isNumeric;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,24 +14,20 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import models.Projet;
-import models.Proposition;
 import services.ServiceProjet;
-import utils.Mailer;
-import utils.wordDetect;
 
 /**
  * FXML Controller class
  *
  * @author malek
  */
-public class AjouterProjetController implements Initializable {
+public class MonProjetDetailController implements Initializable {
 
     @FXML
     private Button btnOverview;
@@ -49,33 +44,28 @@ public class AjouterProjetController implements Initializable {
     @FXML
     private Button btnSignout;
     @FXML
-    private Pane pnlCustomer;
-    @FXML
-    private Pane pnlOrders;
-    @FXML
-    private Pane pnlMenus;
-    @FXML
-    private Pane pnlDetailP;
-    @FXML
     private TextField nom;
     @FXML
-    private TextField prix_min;
+    private TextField pmin;
     @FXML
-    private TextField prix_max;
+    private TextField pmax;
     @FXML
     private TextArea desc;
     @FXML
+    private Label statut;
+    @FXML
     private Button btn;
-    
-     int user_id;
     
      private Stage stage;
     private Scene scene;
-    private Parent parent; 
-     private Parent root; 
+    private Parent parent;  
+      private Parent root;
+    private Parent root1;
     
-    ServiceProjet spr = new ServiceProjet();
-    wordDetect wd = new wordDetect();
+    int user_id;
+    int  p_id;
+    
+     ServiceProjet sp =new ServiceProjet();
 
     /**
      * Initializes the controller class.
@@ -86,9 +76,8 @@ public class AjouterProjetController implements Initializable {
     }    
 
     @FXML
-        private void handleClicks(ActionEvent actionEvent) throws IOException {
-        
-            user_id=4;
+    private void handleClicks(ActionEvent actionEvent) throws IOException {
+                  user_id=4;
         if (actionEvent.getSource() == btnCustomers) {
               FXMLLoader loader = new FXMLLoader(getClass().getResource("MesProjets.fxml"));
       root = loader.load();
@@ -129,63 +118,38 @@ public class AjouterProjetController implements Initializable {
          stage.setScene(scene);
          stage.show();
         }
-        
     }
 
     @FXML
-    private void ajouter(ActionEvent event) throws IOException, InterruptedException {
+    private void modifier(ActionEvent event) throws IOException {
+        user_id=4;
         
-          
+        System.out.println("to change "+ nom.getText());
         
-        if(nom.getText().isEmpty() || prix_min.getText().isEmpty() || prix_max.getText().isEmpty() ||desc.getText().isEmpty()){
-              Alert alert1 = new Alert(Alert.AlertType.ERROR);
-            alert1.setTitle("Erreur");
-            alert1.setHeaderText("Erreur!");
-            alert1.setContentText("Veuillez remplir tout les champs ! ");
-            alert1.show();
-            
-        }else if(isNumeric(prix_min.getText())==false ||isNumeric(prix_max.getText())==false  ){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setHeaderText("Erreur!");
-            alert.setContentText("Le prix doit etre un nombre ");
-            alert.show();
-        }else if(wd.testAng(desc.getText())==true || wd.testWithFile(desc.getText())==true){
-              Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setHeaderText("Erreur!");
-            alert.setContentText("Texte malveillant !");
-            alert.show();
-            String message = "<i>Attention!</i><br>";
-        message += "<b>Interdit de publier cette proposition!</b><br>";
-        message += "<font color=red>Essayer de ne pas faire ca</font>";
-            Mailer.send("gamesmalek2@gmail.com","Malek*123", "malekabasise@gmail.com", "Avertissement",  message);
-            
-        }else
-        
-       {
-            
-            
-            System.out.println("okkk");
-            
-            user_id=4;
-             
-            Projet p = new Projet(user_id,nom.getText(),desc.getText(),Integer.parseInt(prix_min.getText()),Integer.parseInt(prix_max.getText()),"pending");
-            spr.createProjet(p);
-            
-            
-              FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
+        sp.updateProjet(p_id, nom.getText(),desc.getText(), Double.parseDouble(pmin.getText()),Double.parseDouble(pmax.getText()) );
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MesProjets.fxml"));
       root = loader.load();
-      Controller c = loader.getController();
-      c.listell();
+      MesProjetsController mp = loader.getController();
+     mp.listAll();
          stage = (Stage)((Node)event.getSource()).getScene().getWindow();
          
          scene = new Scene(root);
          stage.setScene(scene);
          stage.show();
-            
-        }
     }
-
+    
+    @FXML
+      public void setData(int id ){
+          Projet pS = sp.detailProjet(id);
+          statut.setText(pS.getStatut());
+        nom.setText(pS.getNom());
+        pmin.setText(String.valueOf(pS.getMin_salaire()));
+        pmax.setText(String.valueOf(pS.getMax_salaire())); 
+        desc.setText(pS.getDescription());
+        p_id=pS.getId();
+        user_id=4;
+        
+        
+    }
     
 }

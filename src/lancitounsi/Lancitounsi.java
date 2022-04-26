@@ -26,6 +26,7 @@ import services.ServiceUser;
 
 
 
+
 import javax.mail.MessagingException;
 import models.catégorie;
 import models.contrat;
@@ -38,6 +39,17 @@ import services.ServicePortfolio;
 import models.Review;
 import services.ServiceReview;
 
+import java.io.*;
+import utils.wordDetect;
+
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import utils.Mailer;
+
+
+
 /**
  *
  * @author malek
@@ -47,7 +59,7 @@ public class Lancitounsi {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, InterruptedException {
         // TODO code application logic here
         
         
@@ -60,6 +72,29 @@ public class Lancitounsi {
         Connection cnx = instance.getCnx();
         System.out.println("connextion..."+cnx);
         System.out.println("**********MALEK***********");
+        ServiceProjet s =new ServiceProjet();
+        System.out.println("kkkkkkkkkkkk : "+s.readProjetsLike("a"));
+        
+        String testAng;
+        
+        testAng="shit ok alraday qdjg ";
+   String tA = testAng.replace(" ", "%20");
+    
+      //  Mailer.send("gamesmalek2@gmail.com","Malek*123", "malekabasise@gmail.com", "Avertissement",  "Interdit de publier cette proposition");
+        
+        String testFile;
+        
+        testFile="aa aa aa aa pute ";
+        
+        wordDetect wd = new wordDetect();
+        System.out.println("test ang detect : " + wd.testAng(tA));
+        System.out.println("test file detect : " + wd.testWithFile(testFile));
+        
+        
+        
+         
+      
+        /*
         Projet p=new Projet(2,"malek","aaaaaaaaaaaaaaaa",10,102,"pending");
         ServiceProjet s =new ServiceProjet();
          s.createProjet(p);
@@ -127,6 +162,7 @@ Fich.createFichier(f);
  List<Fichier> fichiers;
         fichiers = Fich.readFichier(); 
         System.out.println(fichiers.toString());      */
+/*
 
 System.out.println("**********CHEHINE***********");
 
@@ -143,6 +179,7 @@ comp.createCompetence(c);
         competences = comp.readCompetence(); 
         System.out.println(competences.toString());
         */
+/*
         List<Competence> competences ;
         //competences = comp.SearchByName("javascript");
         competences = comp.TriParName();
@@ -334,6 +371,6 @@ comp.createCompetence(c);
      //List<Review> reviews = new ArrayList();
       //  reviews = revSer.readReviews(); 
        // System.out.println(reviews.toString());
-    }
+           }
     
 }

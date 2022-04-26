@@ -23,15 +23,14 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import models.Projet;
-import models.Proposition;
-import services.ServiceProposition;
+import services.ServiceProjet;
 
 /**
  * FXML Controller class
  *
  * @author malek
  */
-public class MesPropositionsController implements Initializable {
+public class MesProjetsController implements Initializable {
 
     @FXML
     private Button btnOverview;
@@ -56,58 +55,32 @@ public class MesPropositionsController implements Initializable {
     @FXML
     private Pane pnlOverview;
     @FXML
+    private Label tt_prop;
+    @FXML
     private VBox pnItems;
-    @FXML
-    private Pane pnlDetailP;
-    @FXML
-    private Pane det;
-    ServiceProposition sp = new ServiceProposition();
+    
+     private Stage stage;
+    private Scene scene;
+    private Parent parent; 
+    private Parent root;
+    
     int user_id;
     
-    
-     
-   private Stage stage;
-    private Scene scene;
-    private Parent parent;  
-      private Parent root;
-    private Parent root1;
+    ServiceProjet sp = new ServiceProjet();
     @FXML
-    private Label tt_prop;
-    
+    private Button dstat;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        user_id = 4;
-            List<Proposition> l = sp.MesPropositions(user_id);
-            
-            tt_prop.setText(String.valueOf(l.size()));
-        Node[] nodes = new Node[l.size()];
-        for (int i = 0; i < nodes.length; i++) {
-             FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(Main.class.getResource("itemListProp.fxml"));
-           try {
-               Pane pane = fxmlLoader.load();
-               
-               
-                  ItemListPropController ItemController= fxmlLoader.getController();
-           
-               ItemController.setData(l.get(i));
-               
-                pnItems.getChildren().add(pane);
-               
-           } catch (IOException ex) {
-               Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-           }  
-            
-        }
     }    
 
     @FXML
     private void handleClicks(ActionEvent actionEvent) throws IOException {
-           user_id=4;
+            user_id=4;
         if (actionEvent.getSource() == btnCustomers) {
               FXMLLoader loader = new FXMLLoader(getClass().getResource("MesProjets.fxml"));
       root = loader.load();
@@ -141,14 +114,50 @@ public class MesPropositionsController implements Initializable {
          stage.show();
         } if(actionEvent.getSource()==btnMenus)
         {
-               Parent root = FXMLLoader.load(getClass().getResource("test.fxml"));
-         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+              
+        }
+        
+    }
+    
+    
+    public void listAll() throws IOException {
+        user_id = 4;
+      List<Projet> l = sp.MesProjets(user_id);
+       tt_prop.setText(String.valueOf(l.size()));
+        Node[] nodes = new Node[l.size()];
+        for (int i = 0; i < nodes.length; i++) {
+             FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(Main.class.getResource("itemMesProjets.fxml"));
+           try {
+               Pane pane = fxmlLoader.load();
+               
+               
+                  ItemMesProjetsController ItemController= fxmlLoader.getController();
+           
+               ItemController.setData(l.get(i));
+               
+                pnItems.getChildren().add(pane);
+               
+           } catch (IOException ex) {
+               Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+           }  
+            
+        }
+        
+    }
+
+    @FXML
+    private void dstat(ActionEvent event) throws IOException {
+        
+        Parent root = FXMLLoader.load(getClass().getResource("test.fxml"));
+         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
          
          scene = new Scene(root);
          stage.setScene(scene);
          stage.show();
-        }
-        
     }
+    
+    
+    
     
 }

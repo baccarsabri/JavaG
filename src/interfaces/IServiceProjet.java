@@ -20,4 +20,6 @@ public interface IServiceProjet {
     public Projet detailProjet(int id);
     public List<Projet> MesProjets(int id);
     public List<Projet> MesProjetsByStatut(int id,String statut);
+    public List<Projet> readProjetsLike(String like);
+    
 }
