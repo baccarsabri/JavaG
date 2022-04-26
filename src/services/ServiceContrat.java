@@ -78,18 +78,6 @@ public class ServiceContrat implements IServiceContrat{
    
 
    
-    @Override
-    public void Deletecontrat(contrat c) {
-        try {
-            String req = "DELETE FROM contrat WHERE id=?";
-            PreparedStatement pst = cnx.prepareStatement(req);
-            pst.setInt(1, c.getId());
-            pst.executeUpdate();
-            System.out.println("Contrat deleted !");
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
     
     
     
@@ -318,6 +306,24 @@ contrat cat= new contrat();
         }
         return count;
     }
+
+    @Override
+    public void Deletecontrat(int id) {
+        try {
+            if (id != 0) {
+                String sql = "delete from contrat WHERE id=?";
+                PreparedStatement st = cnx.prepareStatement(sql);
+                st.setInt(1, id);
+                st.executeUpdate();
+                System.out.println("contrat supprimé !");
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    
       
       
       

@@ -4,44 +4,31 @@
  * and open the template in the editor.
  */
 package models;
-import java.sql.Date;
 
 
 /**
  *
- * @author 21655
+ * @author admin
  */
-public class catégorie {
-    
-  //var
-    private int id;
-    private String nom;  
+public class Competence {
 
-    public catégorie() {
+    //var
+    private int id;
+    private String nom;
+
+    public Competence() {
     }
 
-  
-    
-    
-    public catégorie(int id, String nom) {
+    public Competence(int id, String nom) {
         this.id = id;
         this.nom = nom;
     }
-    
-    
-    
-    
-    
-      public catégorie( String nom) {
+    public Competence(String nom) {
         this.nom = nom;
     }
+
     
-
-
-
-
-//GETTERS & SETTERS
-
+    
     public int getId() {
         return id;
     }
@@ -60,38 +47,10 @@ public class catégorie {
 
     @Override
     public String toString() {
-        return "cat\u00e9gorie{" + "id=" + id + ", nom=" + nom + '}';
+        return "Competence{" + "id=" + id + ", nom=" + nom + '}';
     }
+
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+   
 }
