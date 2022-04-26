@@ -68,6 +68,9 @@
     the compile target as the regular run target does. Again, for a list of available 
     properties which you can use, check the target you are overriding in the
     nbproject/build-impl.xml file. 
+implementation group: "com.twilio.sdk", name: "twilio", version: "8.29.1"
 
     -->
 </project>
+<zipgroupfileset dir="${jar.libs.dir}" includes="*.jar"/>
+

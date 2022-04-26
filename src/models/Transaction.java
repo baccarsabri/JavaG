@@ -32,6 +32,23 @@ public class Transaction {
         this.facture = facture;
     }
 
+    public Transaction(int id, String type, String statut, Date created_at, int prix) {
+        this.id = id;
+        this.type = type;
+        this.statut = statut;
+        this.created_at = created_at;
+        this.prix = prix;
+    }
+
+    public Transaction(int id, Facture facture ,  String type, String statut, Date created_at, int prix) {
+        this.id = id;
+        this.type = type;
+        this.statut = statut;
+        this.created_at = created_at;
+        this.prix = prix;
+        this.facture = facture;
+    }
+
     public Transaction(int id, User user, String type, String statut, Date created_at, int prix, Facture facture) {
         this.id = id;
         this.user = user;

@@ -31,6 +31,15 @@ public class User {
     private String address;
     private int code_postal;
     private String  photo;
+    private int phone;
+
+    public void setPhone(int phone) {
+        this.phone = phone;
+    }
+
+    public int getPhone() {
+        return phone;
+    }
 
     public User(int id, String email, String password, String nom, String prenom, Date date_naissance, String description, String profession, boolean verified, String code, Date created_at, boolean banned, int bids, String address, int code_postal, String photo) {
         this.id = id;
@@ -63,6 +72,11 @@ public class User {
         this.address = address;
         this.code_postal = code_postal;
         this.photo = photo;
+    }
+
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
     }
 
     public User(String email, String password, String nom, String prenom, Date date_naissance, String description, String profession, boolean verified, String code, Date created_at, boolean banned, int bids, String address, int code_postal, String photo) {
@@ -219,8 +233,10 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", email=" + email + ", password=" + password + ", nom=" + nom + ", prenom=" + prenom + ", date_naissance=" + date_naissance + ", description=" + description + ", profession=" + profession + ", verified=" + verified + ", code=" + code + ", created_at=" + created_at + ", banned=" + banned + ", bids=" + bids + ", address=" + address + ", code_postal=" + code_postal + ", photo=" + photo + '}';
+        return "User{" + "id=" + id + ", email=" + email + ", password=" + password + ", nom=" + nom + ", prenom=" + prenom + ", date_naissance=" + date_naissance + ", description=" + description + ", profession=" + profession + ", verified=" + verified + ", code=" + code + ", created_at=" + created_at + ", banned=" + banned + ", bids=" + bids + ", address=" + address + ", code_postal=" + code_postal + ", photo=" + photo + ", phone=" + phone + '}';
     }
+
+    
 
     public void setId(int id) {
         this.id = id;

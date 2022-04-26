@@ -24,6 +24,7 @@ public interface InterfaceUser {
     public boolean verified(int id ,boolean v);
     public boolean banned(int id , boolean b);
     public User getUserByEmail(String email);
+    public void addPhoneNumber(User user , int phone);
       
    
     

@@ -1,0 +1,134 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package gui;
+
+
+
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+import models.Transaction;
+import services.ServiceTransaction;
+import static utils.SessionManager.getUser;
+import static utils.SessionManager.setUser;
+
+
+/**
+ * FXML Controller class
+ *
+ * @author bacca
+ */
+public class TransactionsController implements Initializable {
+
+    @FXML
+    private Button btnOverview;
+    @FXML
+    private Button btnOrders;
+    @FXML
+    private Button btnCustomers;
+    @FXML
+    private Button btnPackages;
+    @FXML
+    private Button btnSettings;
+    @FXML
+    private Button btnSignout;
+    @FXML
+    private Pane pnlCustomer;
+    @FXML
+    private Pane pnlOrders;
+    @FXML
+    private Pane pnlMenus;
+    @FXML
+    private Pane pnlOverview;
+    @FXML
+    private TextField search;
+    @FXML
+    private Label tt_pr;
+    @FXML
+    private VBox pnItems;
+    @FXML
+    private Button btnTransaction;
+        private Stage stage;
+    private Scene scene;
+    private Parent parent;
+    
+    ServiceTransaction st= new ServiceTransaction();
+
+    /**
+     * Initializes the controller class.
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+        
+        List<Transaction> l = st.AllTransactions(getUser());
+        System.out.print("hhh : "+ getUser());
+        Node[] nodes = new Node[l.size()];
+        tt_pr.setText(String.valueOf(l.size()));
+        for (int i = 0; i < nodes.length; i++) {
+             FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(NewFXMain.class.getResource("itemTransaction.fxml"));
+           try {
+               Pane pane = fxmlLoader.load();
+               
+               
+                  ItemTransactionController ItemControllere= fxmlLoader.getController();
+           
+               ItemControllere.setData(l.get(i));
+               
+                pnItems.getChildren().add(pane);
+               
+           } catch (IOException ex) {
+               Logger.getLogger(TransactionsController.class.getName()).log(Level.SEVERE, null, ex);
+           }
+        
+    } 
+    }
+
+    @FXML
+    private void handleClicks(ActionEvent event) {
+    }
+
+    @FXML
+    private void search(ActionEvent event) {
+    }
+
+    @FXML
+    private void logout(ActionEvent event) throws IOException {
+        
+        
+        setUser(null);
+         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+         scene = new Scene(root);
+         stage.setScene(scene);
+         stage.show();
+    }
+    
+}

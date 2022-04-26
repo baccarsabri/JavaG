@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/bacca/OneDrive/Documents/NetBeansProjects/javaGunners/lancitounsi/src/models/User.java</file>
+            <file>file:/C:/Users/bacca/OneDrive/Documents/NetBeansProjects/javaGunners/lancitounsi/src/gui/PaymentController.java</file>
+            <file>file:/C:/Users/bacca/OneDrive/Documents/NetBeansProjects/javaGunners/lancitounsi/src/lancitounsi/Lancitounsi.java</file>
+            <file>file:/C:/Users/bacca/OneDrive/Documents/NetBeansProjects/javaGunners/lancitounsi/src/interfaces/InterfaceUser.java</file>
+            <file>file:/C:/Users/bacca/OneDrive/Documents/NetBeansProjects/javaGunners/lancitounsi/src/gui/LoginController.java</file>
+            <file>file:/C:/Users/bacca/OneDrive/Documents/NetBeansProjects/javaGunners/lancitounsi/src/gui/AddPhoneController.java</file>
+            <file>file:/C:/Users/bacca/OneDrive/Documents/NetBeansProjects/javaGunners/lancitounsi/src/gui/NewFXMain.java</file>
+            <file>file:/C:/Users/bacca/OneDrive/Documents/NetBeansProjects/javaGunners/lancitounsi/src/utils/SessionManager.java</file>
+            <file>file:/C:/Users/bacca/OneDrive/Documents/NetBeansProjects/javaGunners/lancitounsi/src/models/Transaction.java</file>
+            <file>file:/C:/Users/bacca/OneDrive/Documents/NetBeansProjects/javaGunners/lancitounsi/src/gui/CodeController.java</file>
+            <file>file:/C:/Users/bacca/OneDrive/Documents/NetBeansProjects/javaGunners/lancitounsi/src/utils/SendSms.java</file>
+            <file>file:/C:/Users/bacca/OneDrive/Documents/NetBeansProjects/javaGunners/lancitounsi/src/gui/TransactionsController.java</file>
+            <file>file:/C:/Users/bacca/OneDrive/Documents/NetBeansProjects/javaGunners/lancitounsi/src/services/ServiceUser.java</file>
+            <file>file:/C:/Users/bacca/OneDrive/Documents/NetBeansProjects/javaGunners/lancitounsi/src/interfaces/InterfaceTransaction.java</file>
+            <file>file:/C:/Users/bacca/OneDrive/Documents/NetBeansProjects/javaGunners/lancitounsi/src/models/Facture.java</file>
+            <file>file:/C:/Users/bacca/OneDrive/Documents/NetBeansProjects/javaGunners/lancitounsi/src/gui/BuyBidsController.java</file>
+            <file>file:/C:/Users/bacca/OneDrive/Documents/NetBeansProjects/javaGunners/lancitounsi/src/gui/Transactions.fxml</file>
+            <file>file:/C:/Users/bacca/OneDrive/Documents/NetBeansProjects/javaGunners/lancitounsi/src/utils/MaConnexion.java</file>
+            <file>file:/C:/Users/bacca/OneDrive/Documents/NetBeansProjects/javaGunners/lancitounsi/src/gui/itemTransaction.fxml</file>
+            <file>file:/C:/Users/bacca/OneDrive/Documents/NetBeansProjects/javaGunners/lancitounsi/src/gui/HomeController.java</file>
+            <file>file:/C:/Users/bacca/OneDrive/Documents/NetBeansProjects/javaGunners/lancitounsi/src/gui/addPhone.fxml</file>
+            <file>file:/C:/Users/bacca/OneDrive/Documents/NetBeansProjects/javaGunners/lancitounsi/src/gui/SignUpController.java</file>
+            <file>file:/C:/Users/bacca/OneDrive/Documents/NetBeansProjects/javaGunners/lancitounsi/src/gui/ItemTransactionController.java</file>
+            <file>file:/C:/Users/bacca/OneDrive/Documents/NetBeansProjects/javaGunners/lancitounsi/src/services/ServiceTransaction.java</file>
+        </group>
+    </open-files>
+</project-private>

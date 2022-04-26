@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="476.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SignUpController">
+   <children>
+      <Text fill="#d71515" layoutX="150.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Lanci Tounsi">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="215.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
+      <Text layoutX="215.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
+      <Text layoutX="215.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Password" />
+      <TextField fx:id="email" layoutX="215.0" layoutY="152.0" />
+      <PasswordField fx:id="password" layoutX="215.0" layoutY="204.0" />
+      <PasswordField fx:id="confirm_password" layoutX="215.0" layoutY="267.0" />
+      <Button layoutX="266.0" layoutY="314.0" mnemonicParsing="false" onAction="#signup" text="SignUp" textFill="#2c2929" />
+      <Text layoutX="187.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" text="vous avez un compte ?" />
+      <Button layoutX="370.0" layoutY="360.0" mnemonicParsing="false" onAction="#verslogin" text="login" />
+   </children>
+</AnchorPane>
