@@ -21,5 +21,7 @@ public interface IServiceProposition {
     public List<Proposition> MesPropositions(int id);
     public List<Proposition> MesPropsByStatut(int id,String statut);
     public boolean verifProp(int use_id,int projet_id);
+    public List<Proposition> PropoisitionsByProj(int ptojet_id);
+    
 }
 

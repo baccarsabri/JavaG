@@ -5,6 +5,8 @@
  */
 package interfaces;
 
+import java.util.List;
+import models.Transaction;
 import models.User;
 
 /**
@@ -14,5 +16,6 @@ import models.User;
 public interface InterfaceTransaction {
     
     public void transaction(User user , String type);
+    public List<Transaction> AllTransactions(User user);
     
 }

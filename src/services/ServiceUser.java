@@ -15,6 +15,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import models.User;
 
 /**
@@ -55,6 +57,7 @@ public class ServiceUser implements InterfaceUser{
                 user.setAddress(rs.getString("address"));
                 user.setCode_postal(rs.getInt("code_postal"));
                 user.setPhoto(rs.getString("photo"));
+                user.setPhone(rs.getInt("phone"));
                 
                 
             }
@@ -94,15 +97,39 @@ public class ServiceUser implements InterfaceUser{
                 user.setAddress(rs.getString("address"));
                 user.setCode_postal(rs.getInt("code_postal"));
                 user.setPhoto(rs.getString("photo"));
-                
+                return user;
                 
             }
             
         } catch (SQLException ex) {
           ex.printStackTrace();
         }
+        return null;
         
+    }
+     public User signup(User user){
+        //request
+        long millis=System.currentTimeMillis();  
+        java.sql.Date now=new java.sql.Date(millis);  
+        String req = "INSERT INTO `User`(`email`, `password` , `created_at` , `verified` , `banned` , `bids`) VALUES (?,?,?,?,?,?)";
+        try {
+            PreparedStatement st = cnx.prepareStatement(req);
+            st.setString(1, user.getEmail());
+            st.setString(2, user.getPassword());
+            st.setDate(3, now );
+            st.setBoolean(4, false);
+            st.setBoolean(5 , false);
+            st.setInt(6 , 0);
+           
+            st.executeUpdate();
+            System.out.println("User ajoutée avec succes.");
+            
+        } catch (SQLException ex) {
+            
+            ex.printStackTrace();
+        }
         return user;
+        
     }
     public User addUser(User user){
         //request
@@ -286,6 +313,95 @@ public class ServiceUser implements InterfaceUser{
     
     
     }
+    
+      public void setcode(User user ,String code){
+     //request
+        String req = "UPDATE `User` SET code=? WHERE id="+user.getId();
+        try {
+            PreparedStatement st = cnx.prepareStatement(req);
+            st.setString(1, code);
+          
+          st.executeUpdate();
+            System.out.println("succes.");
+            
+        }
+        catch (SQLException ex) {
+          ex.printStackTrace();
+        }
+        
+        
+    
+    
+    }
+      
+      public String getCode(User user) {
+        
+       
+        String code = null;
+        try {
+           
+            String req = "SELECT * FROM user where id="+user.getId();
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            
+            while (rs.next()) { 
+                code=rs.getString("code");
+              
+                
+                
+            }
+            
+        } catch (SQLException ex) {
+          ex.printStackTrace();
+        }
+        
+        return code;
+    }
+      
+      public int getBids(User user) {
+        
+       
+        int code = 0;
+        try {
+           
+            String req = "SELECT * FROM user where id="+user.getId();
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            
+            while (rs.next()) { 
+                code=rs.getInt("bids");
+              
+                
+                
+            }
+            
+        } catch (SQLException ex) {
+          ex.printStackTrace();
+        }
+        
+        
+        return code;
+    }
+      
+      public void addPhoneNumber(User user , int phone){
+        String req = "UPDATE `User` SET phone=? WHERE id="+user.getId();
+        try {
+            PreparedStatement st = cnx.prepareStatement(req);
+            st.setInt(1,phone );
+          
+          st.executeUpdate();
+            System.out.println("succes.");
+            
+        }
+        catch (SQLException ex) {
+          ex.printStackTrace();
+        }
+      
+      
+      
+      }
+
+  
        
 
     

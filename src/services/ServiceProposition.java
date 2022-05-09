@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import models.Proposition;
+import models.User;
 import utils.MaConnexion;
 import utils.Mailer;
 
@@ -51,6 +52,7 @@ public class ServiceProposition implements IServiceProposition {
             st.setString(7, p.getStatut());
             
             st.executeUpdate();
+            
             System.out.println("Proposition ajoutée avec succes.");
             
         } catch (SQLException ex) {
@@ -225,6 +227,28 @@ public class ServiceProposition implements IServiceProposition {
         }
         
         return res;
+    }
+
+    @Override
+    public List<Proposition> PropoisitionsByProj(int id) {
+          ArrayList<Proposition> mesProps = new ArrayList();
+        
+        try {
+            Statement st = cnx.createStatement();
+            String req = "SELECT * FROM proposition WHERE projet_id="+id;
+            ResultSet rs = st.executeQuery(req);
+            
+            while (rs.next()) {                
+                
+                mesProps.add(new Proposition(rs.getInt(1),s.detailProjet(rs.getInt(2)), rs.getInt(3),rs.getInt(4),rs.getInt(5), rs.getString("description"), rs.getDate(7), rs.getString("statut")));
+                
+            }
+            
+        } catch (SQLException ex) {
+          ex.printStackTrace();
+        }
+        
+        return mesProps;
     }
     
 }

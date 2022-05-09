@@ -3,8 +3,33 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/lancitounsi/src/home/ProposerController.java</file>
+            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/lancitounsi/src/utils/MaConnexion.java</file>
+            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/lancitounsi/src/home/ItemPropController.java</file>
+            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/lancitounsi/src/home/Home.fxml</file>
+            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/lancitounsi/src/home/DetailPController.java</file>
+            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/lancitounsi/src/home/Controller.java</file>
+            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/lancitounsi/src/home/DProjetController.java</file>
+            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/lancitounsi/src/home/monProjetDetail.fxml</file>
+            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/lancitounsi/src/home/MonProjetDetailController.java</file>
+            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/lancitounsi/src/home/Main.java</file>
+            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/lancitounsi/src/models/Proposition.java</file>
             <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/lancitounsi/src/utils/EmailSender.java</file>
             <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/lancitounsi/src/lancitounsi/Lancitounsi.java</file>
+            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/lancitounsi/src/home/MesProjetsController.java</file>
+            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/lancitounsi/src/home/MesProjets.fxml</file>
+            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/lancitounsi/src/home/AjouterProjetController.java</file>
+            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/lancitounsi/src/utils/Mailer.java</file>
+            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/lancitounsi/src/home/TestController.java</file>
+            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/lancitounsi/src/home/Item.fxml</file>
+            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/lancitounsi/src/home/ItemMesProjetsController.java</file>
+            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/lancitounsi/src/services/ServiceProposition.java</file>
+            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/lancitounsi/src/home/MesPropositionsController.java</file>
+            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/lancitounsi/src/utils/wordDetect.java</file>
+            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/lancitounsi/src/services/ServiceProjet.java</file>
+            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/lancitounsi/src/home/test.fxml</file>
+            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/lancitounsi/src/models/Projet.java</file>
+            <file>file:/C:/Users/malek/Documents/NetBeansProjects/lancitounsi/lancitounsi/src/home/ItemController.java</file>
         </group>
     </open-files>
 </project-private>
