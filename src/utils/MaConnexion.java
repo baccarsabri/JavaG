@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class MaConnexion {
     
      //DB CREDENTIALS
-    final static String URL = "jdbc:mysql://127.0.0.1:3306/lancitounsif";
+    final static String URL = "jdbc:mysql://127.0.0.1:3306/lancitounsi";
     final static String USERNAME = "root";
     final static String PWD = "";
     

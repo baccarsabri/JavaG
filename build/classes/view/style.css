@@ -1,0 +1,78 @@
+.button
+{
+-fx-background-color : #05071F;
+-fx-text-fill : #e7e5e5;
+}
+.button:hover{
+-fx-background-color : #10165F;
+}
+.button:pressed
+{
+-fx-background-color : #1620A1;
+}
+
+.scroll-pane {
+    -fx-background-color: #02030A;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #10165F;
+    -fx-background-radius: 5em;
+}
+
+.scroll-pane > .corner {
+    -fx-background-color: black;
+}
+.table-view {
+    -fx-background-color: white;
+}
+
+.table-cell {
+    -fx-border-color: transparent; 
+}
+
+.table-view .column-header, 
+.table-view .column-header-background .filler {
+    -fx-cell-size : 20;
+    -fx-background-color: white;
+}
+
+.table-view .column-header .label {
+    -fx-font-size: 16;
+    -fx-text-fill: #005797;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.table-view .cell {
+    -fx-cell-size: 30;
+    -fx-text-fill: #000000;
+    -fx-font-size: 15;
+    -fx-alignment: CENTER_LEFT;
+}
+.table-view .table-row-cell:selected{
+    -fx-background-color: #005797;
+} 
+.table-row-cell:selected {
+    -fx-background-color: #005797;
+}
+
+.table-row-cell:selected .text {
+    -fx-fill: white;
+}
