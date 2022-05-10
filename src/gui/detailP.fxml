@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="253.0" prefWidth="510.0" style="-fx-background-color: #02030A; -fx-background-radius: 5; -fx-background-insets: 0;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="home.DetailPController">
+   <children>
+      <Label fx:id="id_p" layoutX="135.0" layoutY="14.0" text="Projet id :" textFill="#b7c3d7">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="nom_p" layoutX="14.0" layoutY="47.0" text="Nom Projet :" textFill="#b7c3d7">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="s_min" layoutX="13.0" layoutY="79.0" text="Salaire min : " textFill="#b7c3d7">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="s_max" layoutX="13.0" layoutY="108.0" text="Salaire max : " textFill="#b7c3d7">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="desc" layoutX="13.0" layoutY="137.0" text="Description : " textFill="#b7c3d7">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="statut" layoutX="358.0" layoutY="18.0" text="Statut : " textFill="#b7c3d7">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

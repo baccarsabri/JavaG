@@ -22,8 +22,20 @@ public class contrat {
     private float prix;
     private Date created_at;
     private String statut;
+    private int projet_id;
 
-    public contrat(int id, int user_client_id, int user_freelancer_id, float prix, Date created_at, String statut) {
+    
+    
+      public contrat(int id,String statut,Date created_at) {
+        this.id = id;
+        this.created_at = created_at;
+        this.statut = statut;
+    }
+    
+    
+    
+    
+    public contrat(int id, int user_client_id, int user_freelancer_id,int projet_id, float prix, Date created_at, String statut) {
         this.id = id;
         this.user_client_id = user_client_id;
         this.user_freelancer_id = user_freelancer_id;
@@ -32,6 +44,10 @@ public class contrat {
         this.statut = statut;
     }
 
+    public int getProjet_id() {
+        return projet_id;
+    }
+   
     
     public contrat( int user_client_id, int user_freelancer_id, float prix, Date created_at, String statut) {
         
@@ -41,8 +57,17 @@ public class contrat {
         this.created_at = created_at;
         this.statut = statut;
     }
+     public contrat( int user_client_id, int user_freelancer_id, int projet_id,float prix, Date created_at, String statut) {
+       this.projet_id= projet_id;
+        this.user_client_id = user_client_id;
+        this.user_freelancer_id = user_freelancer_id;
+        this.prix = prix;
+        this.created_at = created_at;
+        this.statut = statut;
+    }
     
-    
+     
+     
     //GETTERS & SETTERS
 
     public int getId() {

@@ -6,12 +6,15 @@
 package services;
 import interfaces.IServiceContrat ;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import models.Projet;
+import models.User;
 
 import models.contrat;
 import utils.MaConnexion;
@@ -31,7 +34,7 @@ public class ServiceContrat implements IServiceContrat{
     public void createContrat(contrat  p) {
         
         //request
-        String req = "INSERT INTO `contrat`( `user_client_id`, `user_freelancer_id`, `prix`, `created_at`, `statut`) VALUES (?,?,?,?,?)";
+        String req = "INSERT INTO `contrat`( `user_client_id`, `user_freelancer_id`, `prix`, `created_at`, `statut`,`projet_id`) VALUES (?,?,?,?,?,?)";
         try {
             PreparedStatement st = cnx.prepareStatement(req);
             st.setInt(1, p.getUser_client_id());
@@ -39,6 +42,7 @@ public class ServiceContrat implements IServiceContrat{
             st.setFloat(3, p.getPrix());
             st.setDate(4, p.getCreated_at());
             st.setString(5, p.getStatut());
+             st.setInt(6, p.getProjet_id());
             
             
          
@@ -64,7 +68,7 @@ public class ServiceContrat implements IServiceContrat{
             
             while (rs.next()) {                
                 
-                cr.add(new contrat (rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getFloat(4), rs.getDate(5), rs.getString(6)));
+                cr.add(new contrat (rs.getInt(1), rs.getInt(2), rs.getInt(3),rs.getInt(4), rs.getFloat(5), rs.getDate(6), rs.getString(7)));
                 
             }
             
@@ -76,8 +80,6 @@ public class ServiceContrat implements IServiceContrat{
     }
 
    
-
-   
     
     
     
@@ -86,17 +88,18 @@ public class ServiceContrat implements IServiceContrat{
         try {
 
             if (c.getId() != 0) {
-                String sql = "UPDATE contrat  SET user_client_id=?,user_freelancer_id=?,prix=?,created_at=?,statut=? WHERE id=?";
+                String sql = "UPDATE contrat  SET statut=?,created_at=? WHERE id=?";
 
                 PreparedStatement st = cnx.prepareStatement(sql);
                    
-            st.setInt(1, c.getUser_client_id());
-            st.setInt(2, c.getUser_freelancer_id());
-            st.setFloat(3, c.getPrix());
-            st.setDate(4, c.getCreated_at());
-            st.setString(5, c.getStatut());
-               
-                st.setInt(6, c.getId());
+            
+            st.setString(1, c.getStatut());
+                        st.setDate(2, c.getCreated_at());
+
+                System.out.println(c.getStatut());
+                               System.out.println(c.getId());
+
+                st.setInt(3, c.getId());
                 st.executeUpdate();
                 System.out.println("updated !");
             }
@@ -322,13 +325,69 @@ contrat cat= new contrat();
             System.out.println(ex.getMessage());
         }
     }
+ public Date afficher_date(){
 
+    java.sql.Date dt = new java.sql.Date(0,0,0);   
+        String req="SELECT DATE(created_at) AS date, COUNT(*) AS count FROM contrat GROUP BY date ORDER BY count DESC LIMIT 1";
+        
+        try {
+            PreparedStatement ste = cnx.prepareStatement(req);
+            
+
+            ResultSet rs = ste.executeQuery();
+            while (rs.next()) {
+                dt = rs.getDate("date");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return dt;
+    }
     
+        public List<Projet> MesProjets(int id) {
+         ArrayList<Projet> mesProjets = new ArrayList();
+        
+        try {
+            Statement st = cnx.createStatement();
+            String req = "SELECT * FROM projet WHERE user_id="+id;
+            ResultSet rs = st.executeQuery(req);
+            
+            while (rs.next()) {                
+                
+                mesProjets.add(new Projet(rs.getInt(1),rs.getInt(2), rs.getString("nom"), rs.getString("description"), rs.getDouble(5), rs.getDouble(6), rs.getString("statut")));
+                
+            }
+            
+        } catch (SQLException ex) {
+          ex.printStackTrace();
+        }
+        
+        return mesProjets;
+    }
+
       
       
       
-      
-      
+      public List<User> Mesuser() {
+         ArrayList<User> Mesuser = new ArrayList();
+        
+        try {
+            Statement st = cnx.createStatement();
+            String req = "SELECT * FROM user ";
+            ResultSet rs = st.executeQuery(req);
+            
+            while (rs.next()) {                
+                
+                Mesuser.add(new User(rs.getInt(1), rs.getString("email"), rs.getString("password"), rs.getString("nom"), rs.getString("prenom"), rs.getDate("date_naissance"),rs.getString("description"),rs.getString("profession") , rs.getString("address") ,rs.getInt("code_postal"), rs.getString("photo")));
+                
+            }
+            
+        } catch (SQLException ex) {
+          ex.printStackTrace();
+        }
+        
+        return Mesuser;
+    }
       
       
       
