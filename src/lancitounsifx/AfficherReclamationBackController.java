@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lancitounsifx;
+package gui;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Font;
@@ -47,7 +47,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
-import static lancitounsifx.AfficherReclamationController.numeroPDF;
+import static gui.AfficherReclamationController.numeroPDF;
 import models.Reclamation;
 import services.ServiceReclamation;
 

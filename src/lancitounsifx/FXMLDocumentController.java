@@ -3,23 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lancitounsifx;
+package gui;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
@@ -29,6 +33,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import models.Projet;
 import models.Reclamation;
 import org.controlsfx.control.Notifications;
 import services.ServiceReclamation;
@@ -81,10 +86,14 @@ public class FXMLDocumentController implements Initializable {
    
   private static String GeneratedCode;
 
+  
     private final int totalattempts = 5;
     private static int nbOfClicks = 0;
     ServiceReclamation sr=new ServiceReclamation();
-
+      List<Projet> l= sr.MesProjets(1);
+   int id;
+    @FXML
+    private ChoiceBox c;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -96,12 +105,23 @@ public class FXMLDocumentController implements Initializable {
 
 //        CaptchaCode.setCache(true);
         CaptchaCode.setEffect(mb);
+      
+        Node[] nodes = new Node[l.size()];
+        for (int i = 0; i < nodes.length; i++) {
+            c.getItems().add((i+1)+"-"+ l.get(i).getNom());
+            
+            
+        }
+                     
+
+                
     }    
 
 
     
     @FXML
-    private void ajouter(ActionEvent event) throws Exception {
+    private void ajouter(ActionEvent event) throws Exception {        
+      int idProjet = l.get(c.getSelectionModel().getSelectedIndex()).getId();
       String captcha_code = captchaField.getText();
      if( (captcha_code.isEmpty())||(desc.getText().equals("")) || (desc.getText().equals(" "))||(desc.getText().equals("  "))||(desc.getText().equals("   "))||(desc.getText().equals("    "))||(desc.getText().equals("     "))||(desc.getText().equals("      "))||(desc.getText().equals("       "))||(desc.getText().equals("        "))||(desc.getText().equals("         "))||(desc.getText().equals("          "))||(desc.getText().equals("           "))||(desc.getText().equals("            "))||(desc.getText().equals("             "))||(desc.getText().equals("              "))||(desc.getText().equals("               "))||(desc.getText().equals("                "))||(desc.getText().equals("                 "))||(desc.getText().equals("                  "))||(desc.getText().equals("                   "))||(desc.getText().equals("                    "))||(desc.getText().equals("                     "))||(desc.getText().equals("                      "))||(desc.getText().equals("                       "))||(desc.getText().equals("                        "))||(desc.getText().equals("                         "))||(desc.getText().equals("                          "))||(desc.getText().equals("                           "))||(desc.getText().equals("                            "))||(desc.getText().equals("                             "))||(desc.getText().equals("                              "))||(desc.getText().equals("                               "))||(desc.getText().equals("                                "))||(desc.getText().equals("                                 "))||(desc.getText().equals("                                  "))||(desc.getText().equals("                                   "))||(desc.getText().equals("                                    "))||(desc.getText().equals("                                     "))||(desc.getText().equals("                                      "))||(desc.getText().equals("                                       "))||(desc.getText().equals("                                        "))||(desc.getText().equals("                                         "))||(desc.getText().equals("                                          "))||(desc.getText().equals("                                           "))||(desc.getText().equals("                                            "))||(desc.getText().equals("                                             "))||(desc.getText().equals("                                              "))||(desc.getText().equals("                                               "))||(desc.getText().equals("                                                "))||(desc.getText().equals("                                                 "))||(desc.getText().equals("                                                  "))||(desc.getText().equals("                                                   "))||(desc.getText().equals("                                                    "))||(desc.getText().equals("                                                     "))||(desc.getText().equals("                                                      "))) {
                        Notifications notifications=Notifications.create();
@@ -116,9 +136,9 @@ public class FXMLDocumentController implements Initializable {
                    ServiceReclamation se = new ServiceReclamation();
                    java.util.Date date = new java.util.Date();
                    java.sql.Date myDate = new java.sql.Date(date.getTime());
-                   se.createReclamation(new Reclamation(desc.getText(),myDate,"pending"));
+                   se.createReclamation(new Reclamation(idProjet,desc.getText(),myDate,"pending"));
                    Notifications notifications=Notifications.create();
-                   notifications.text("Reclamation ajoutée");
+                   notifications.text("Réclamation ajoutée");
                    notifications.title("Success Message");
                    notifications.show();
                    boutonajouter.getScene().getWindow().hide();
@@ -176,7 +196,7 @@ public class FXMLDocumentController implements Initializable {
         if (FXMLDocumentController.nbOfClicks < this.totalattempts) {
             FXMLDocumentController.GeneratedCode = sr.CreateCaptchaValue();
             CaptchaCode.setText(FXMLDocumentController.GeneratedCode);
-        } else {
+        } else{
             Alert alert = new Alert(AlertType.ERROR);
             alert.setHeaderText("null");
             alert.setContentText("No More Attempts");

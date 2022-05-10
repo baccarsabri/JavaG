@@ -15,6 +15,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import models.Projet;
 import models.Reclamation;
 import utils.MaConnexion;
 
@@ -30,12 +31,13 @@ public class ServiceReclamation implements IServiceReclamation{
 
     public void createReclamation(Reclamation r) {
         //request
-        String req = "INSERT INTO `reclamation`(`description`, `date_de_reclamation`, `statut`) VALUES (?,?,?)";
+        String req = "INSERT INTO `reclamation`(`description`, `date_de_reclamation`, `statut`,`projet_id`) VALUES (?,?,?,?)";
         try {
             PreparedStatement st = cnx.prepareStatement(req);
             st.setString(1, r.getDescription());
             st.setDate(2, r.getDate_de_reclamation());
             st.setString(3, r.getStatut());
+            st.setInt(4, r.getProjet_id());
             st.executeUpdate();
             System.out.println("Réclamation ajoutée avec succés.");
             
@@ -198,8 +200,6 @@ public void deleteReclamation(int id) {
         
         try {
             PreparedStatement ste = cnx.prepareStatement(req);
-            
-
             ResultSet rs = ste.executeQuery();
             while (rs.next()) {
                 dt = rs.getDate("date");
@@ -221,13 +221,34 @@ public void deleteReclamation(int id) {
                 characterNumber = 65 + baseCharacterNumber;
             } else if (baseCharacterNumber < 52) {
                 characterNumber = 97 + (baseCharacterNumber - 26);
-            } else {
+            } else{
                 characterNumber = 48 + (baseCharacterNumber - 52);
             }
             captchaStrBuffer.append((char) characterNumber);
         }
         return captchaStrBuffer.toString();
 
+    }
+    @Override
+    public List<Projet> MesProjets(int id) {
+         ArrayList<Projet> mesProjets = new ArrayList();
+        
+        try {
+            Statement st = cnx.createStatement();
+            String req = "SELECT * FROM projet WHERE user_id="+id;
+            ResultSet rs = st.executeQuery(req);
+            
+            while (rs.next()) {                
+                
+                mesProjets.add(new Projet(rs.getInt(1),rs.getInt(2), rs.getString("nom"), rs.getString("description"), rs.getDouble(5), rs.getDouble(6), rs.getString("statut")));
+                
+            }
+            
+        } catch (SQLException ex) {
+          ex.printStackTrace();
+        }
+        
+        return mesProjets;
     }
 
 }

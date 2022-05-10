@@ -5,6 +5,7 @@
  */
 package interfaces;
 
+import java.sql.SQLException;
 import java.util.List;
 import models.Fichier;
 
@@ -14,10 +15,11 @@ import models.Fichier;
  */
 public interface IServiceFichier {
     
-    //CRUD
     public void createFichier(Fichier f);
     public List<Fichier> readFichier();
     public void deleteFichier(int id);
     public void updateFichier(Fichier f);
+    public Fichier findFichById(int id)throws SQLException;
+    public List<Fichier> RechercheByLink(String lnk);
     
 }

@@ -6,6 +6,7 @@
 package interfaces;
 
 import java.util.List;
+import models.Projet;
 import models.Reclamation;
 
 /**
@@ -21,4 +22,6 @@ public interface IServiceReclamation {
     public void updateReclamation(Reclamation r);
     public List<Reclamation> RechercheByDescription(String desc);
     public List<Reclamation> TriParDescription();
+    public String CreateCaptchaValue();
+    public List<Projet> MesProjets(int id);
 }
